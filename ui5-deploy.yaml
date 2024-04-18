@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zfiorireportkcc1
+type: application
+framework:
+ 
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: TMS
+          url: http://devtms:8000
+        app:
+          name: ZTMREPORTKCC1
+          description: ZTMREPORTKCC1
+          package: ZTMFIORIKCC
+          transport: DTMK900458
+        exclude:
+          - /test/
